@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.gis.db import models as gls_models
 
 # Create your models here.
 class uploaded(models.Model):
@@ -10,9 +11,7 @@ class Car(models.Model):
     model = models.CharField(max_length=50)
     make = models.CharField(max_length=50)
     year = models.IntegerField()
-    kms_driven = models.FloatField()
-    fuel_type = models.CharField(max_length=50)
-
+    location = gls_models.PointField(help_text="Represented as (longitude, latitude)")
 
     def __str__(self):
         return self.name
